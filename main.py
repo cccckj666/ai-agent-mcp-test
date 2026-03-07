@@ -8,5 +8,6 @@ if __name__ == "__main__":
     ),
     ("human", "I love programming."),
 ]
-    resp=llm.invoke(messages)
-    print(resp)
+    resp=llm.stream(messages)
+    for chunk in resp:
+        print(chunk.content,end="",flush=True)
