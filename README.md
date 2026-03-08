@@ -15,6 +15,8 @@
   - 重构目录结构，将核心逻辑迁移至`app/`目录。
   - 新增`bailian_tools.py`，集成LangChain OpenAI接口调用Qwen-Max旗舰模型。
   - 实现`SecretStr`安全调用。
+  - 引入LangChain`PromptTemplate`，学习提示词模版知识。
+  - 成功实现动态参数注入提示词。
 ---
 
 ## 快速开始 (Getting Started)
@@ -40,3 +42,4 @@
 -  **工程化配置**：实现敏感信息与代码逻辑的完全解耦。
 -  **流式交互优化**：针对推理模型实现Reasoning Content的独立渲染。
 -  **安全类型增强**：采用Pydantic SecretStr。
+-  **提示词工程**：集成LangChain PromptTemplate，支持结构化、动态化的提示词管理。
