@@ -11,7 +11,10 @@
   - 新增 `bailian.py`，接入阿里云百炼平台实现云端 Qwen3 模型调用。
   - 引入 `.env` 环境隔离机制，规范化管理 API Key 等敏感信息。
   - 新增 `bailian_qwq.py`，对接阿里云**QWQ-plus**推理模型。
-
+- [2026-03-08] **目录优化与工具集成**：
+  - 重构目录结构，将核心逻辑迁移至`app/`目录。
+  - 新增`bailian_tools.py`，集成LangChain OpenAI接口调用Qwen-Max旗舰模型。
+  - 实现`SecretStr`安全调用。
 ---
 
 ## 快速开始 (Getting Started)
@@ -36,3 +39,4 @@
 -  **交互体验优化**: 实现 **Streaming (流式输出)**，消除模型生成的等待焦虑。
 -  **工程化配置**：实现敏感信息与代码逻辑的完全解耦。
 -  **流式交互优化**：针对推理模型实现Reasoning Content的独立渲染。
+-  **安全类型增强**：采用Pydantic SecretStr。
