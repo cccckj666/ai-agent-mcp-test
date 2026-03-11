@@ -17,6 +17,9 @@
   - 实现`SecretStr`安全调用。
   - 引入LangChain`PromptTemplate`，学习提示词模版知识。
   - 成功实现动态参数注入提示词。
+- [2026-03-11] **对话升级**：
+  - 引入`ChatPromptTemplate`，实现 System/User 角色的结构化解耦。
+  - 支持多变量（Role/Domain/Question）动态注入，提升模型在专业领域的表现。
 ---
 
 ## 快速开始 (Getting Started)
@@ -43,3 +46,5 @@
 -  **流式交互优化**：针对推理模型实现Reasoning Content的独立渲染。
 -  **安全类型增强**：采用Pydantic SecretStr。
 -  **提示词工程**：集成LangChain PromptTemplate，支持结构化、动态化的提示词管理。
+-  **结构化对话工程**：采用ChatPromptTemplate控制上下文。
+-  **动态参数注入**：支持多维变量实时填充模版。
