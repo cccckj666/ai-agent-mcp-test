@@ -20,6 +20,7 @@
 - [2026-03-11] **对话升级**：
   - 引入`ChatPromptTemplate`，实现 System/User 角色的结构化解耦。
   - 支持多变量（Role/Domain/Question）动态注入，提升模型在专业领域的表现。
+  - 引入 `ChatMessagePromptTemplate`，实现消息体的原子化封装。
 ---
 
 ## 快速开始 (Getting Started)
@@ -48,3 +49,4 @@
 -  **提示词工程**：集成LangChain PromptTemplate，支持结构化、动态化的提示词管理。
 -  **结构化对话工程**：采用ChatPromptTemplate控制上下文。
 -  **动态参数注入**：支持多维变量实时填充模版。
+-  **提示词原子化**：采用ChatMessagePromptTemplate将消息体作为独立组件进行管理。
