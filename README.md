@@ -21,6 +21,9 @@
   - 引入`ChatPromptTemplate`，实现 System/User 角色的结构化解耦。
   - 支持多变量（Role/Domain/Question）动态注入，提升模型在专业领域的表现。
   - 引入 `ChatMessagePromptTemplate`，实现消息体的原子化封装。
+- [2026-03-12] **少样本学习实践**：
+  - 引入 `FewShotPromptTemplate`，实现基于少样本学习（Few-Shot Learning）的提示词引导。
+  - 通过 `examples` 数组动态构建上下文示例。
 ---
 
 ## 快速开始 (Getting Started)
@@ -50,3 +53,4 @@
 -  **结构化对话工程**：采用ChatPromptTemplate控制上下文。
 -  **动态参数注入**：支持多维变量实时填充模版。
 -  **提示词原子化**：采用ChatMessagePromptTemplate将消息体作为独立组件进行管理。
+-  **少样本学习**：使用FewShotPromptTemplate，支持通过少量示例对模型进行即时微调。
