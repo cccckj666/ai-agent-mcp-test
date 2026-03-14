@@ -49,6 +49,8 @@ few_shot_prompt_template=FewShotPromptTemplate(
 print(few_shot_prompt_template)
 prompt=few_shot_prompt_template.format(text="Thank you！")
 print(prompt)
-resp=llm.stream(prompt)
+# resp=llm.stream(prompt)
+chain=few_shot_prompt_template | llm
+resp = chain.stream(input={"text":"Thank you！"})
 for chunk in resp:
     print(chunk.content,end="",flush=True)
