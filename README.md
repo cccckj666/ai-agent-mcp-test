@@ -32,6 +32,8 @@
   - 实现`bind_tools`逻辑，将自定义Python函数（如`add`）绑定至大模型。
   - 通过解析`tool_calls`成功实现本地函数的提取、执行与结果输出。
   - 面对`No module named 'app'`的导入问题，通过`sys.path`动态注入项目根目录。
+  - 引入`@tool`装饰器，实现工具定义。
+  - 集成 Pydantic`BaseModel`作为`args_schema`，通过类型标注和字段描述引导大模型生成更高质量的参数。
 ---
 
 ## 快速开始 (Getting Started)
@@ -64,3 +66,4 @@
 -  **少样本学习**：使用FewShotPromptTemplate，支持通过少量示例对模型进行即时微调。
 -  **链式调用**：使用管道符|构建高效、清晰的AI处理链路。
 -  **自定义工具集成（Tool Calling）**：实现模型对本地Python函数的感知、参数提取与手动触发执行。
+-  **标准化工具集成**：使用@tool+args_schema实现强类型的函数调用

@@ -3,25 +3,34 @@ import sys
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, '../..'))
 sys.path.append(project_root)
-from langchain_core.tools import Tool
+from pydantic import BaseModel, Field
+from langchain_core.tools import tool
 from app.bailian.common import chat_prompt_template,llm
 
+class AddInputArgs(BaseModel):
+    a: int = Field(description="first number")
+    b: int = Field(description="second number")
+
+@tool(
+        description="add two numbers",
+        args_schema=AddInputArgs,
+)
 def add(a,b):
     return a + b
 
-add_tool=Tool.from_function(
-    func=add,
-    name="add",
-    description="add two numbers",
-)
+# add_tool=Tool.from_function(
+#     func=add,
+#     name="add",
+#     description="add two numbers",
+# )
 
 tool_dict={
     "add":add
 }
 
-llm_with_tools=llm.bind_tools([add_tool])  # 将工具绑定到模型上
+llm_with_tools=llm.bind_tools([add])  # 将工具绑定到模型上
 chain=chat_prompt_template | llm_with_tools
-resp=chain.invoke(input={"role":"计算","domain":"数学计算","question":"100+100=？"})
+resp=chain.invoke(input={"role":"计算","domain":"数学计算","question":"使用工具计算：100+100=？"})
 print(resp)
 
 for tool_calls in resp.tool_calls:
@@ -32,5 +41,5 @@ for tool_calls in resp.tool_calls:
     print(func_name)
 
     tool_func=tool_dict[func_name]
-    tool_content=tool_func(int(args["__arg1"]),int(args["__arg2"]))
+    tool_content=tool_func.invoke(args)
     print(tool_content)
