@@ -49,9 +49,3 @@ for chunk in completion:
             is_answering = True
         print(delta.content, end="", flush=True)
         answer_content += delta.content
-
-print("思考内容：")
-print(reasoning_content)
-print("\n\n")
-print("回答内容：")
-print(answer_content)

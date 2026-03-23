@@ -26,6 +26,12 @@
   - 通过 `examples` 数组动态构建上下文示例。
 - [2026-03-14] **链式调用大模型**“
   - 使用`|`符号实现`Prompt|LLM`的无缝对接。
+- [2026-03-23] **自定义工具调用全流程开发**：
+  - 将原`bailian_tools.py`重命名为`bailian_prompt.py`，并新增`bailian_tools.py`，优化结构。
+  - 新建`common.py`作为全局能力层，统一导出LLM实例与核心Prompt。
+  - 实现`bind_tools`逻辑，将自定义Python函数（如`add`）绑定至大模型。
+  - 通过解析`tool_calls`成功实现本地函数的提取、执行与结果输出。
+  - 面对`No module named 'app'`的导入问题，通过`sys.path`动态注入项目根目录。
 ---
 
 ## 快速开始 (Getting Started)
@@ -40,7 +46,7 @@
   - 遇到端口 `11434` 占用报错，是因为 Ollama 后台服务已启动，无需重复执行 `serve`。
   - 如果 C 盘空间不足，建议配置 `OLLAMA_MODELS` 环境变量迁移模型路径。
   - 务必确保.env已加入.gitignore，严禁将API Key提交至公开仓库。
-
+  - 对于ModuleNotFoundError问题，采取在文件最顶部添加`将项目根目录加入Python搜索路径`的代码，再执行导入。
 ---
 
 ## 🛠 功能模块 (Features)
@@ -57,3 +63,4 @@
 -  **提示词原子化**：采用ChatMessagePromptTemplate将消息体作为独立组件进行管理。
 -  **少样本学习**：使用FewShotPromptTemplate，支持通过少量示例对模型进行即时微调。
 -  **链式调用**：使用管道符|构建高效、清晰的AI处理链路。
+-  **自定义工具集成（Tool Calling）**：实现模型对本地Python函数的感知、参数提取与手动触发执行。
